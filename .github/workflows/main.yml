@@ -18,6 +18,10 @@ on:
       - '**.js'
 
   workflow_dispatch:
+    secrets:
+      token:
+        required: true
+        description: seguranca
     inputs:
       nome-da-tecnologia:
         type: choice
@@ -34,6 +38,7 @@ on:
         required: true
         description: informe a versão
         default: '1.0'
+    
       
 
 jobs:
