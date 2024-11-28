@@ -56,7 +56,4 @@ jobs:
          echo ${{ github.sha }} #obtem o hash do ultimo commit
          echo ${{ job.status }}
          echo ${{ github.event }}
-         
-
-
-      
+             
