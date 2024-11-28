@@ -12,9 +12,9 @@ on:
   workflow_dispatch:
     inputs:
       nome:
-        type: math
+        type: text
         required: true
-        description: descrição
+        description: informe o seu nome
         default: 1+1
       
 
