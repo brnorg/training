@@ -48,12 +48,15 @@ jobs:
          echo ${{ inputs.versao }}
          echo ${{ inputs.nome-da-tecnologia }}
   
-  
+
+        # documentação de context
       - name: listando contexts
         run: |
          echo ${{ github.ref }} #obtem a branch
          echo ${{ github.repository }} #obtem o repositorio
          echo ${{ github.sha }} #obtem o hash do ultimo commit
+         echo ${{ github.run_number }} #obtem o numero da execução do job
+         
          echo ${{ job.status }}
          echo ${{ github.event_name }}
 
