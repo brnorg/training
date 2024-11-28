@@ -50,4 +50,7 @@ jobs:
 
      - name: listando inputs
        run: |
-          
+         echo ${{ inputs.nome-da-tecnologia }}
+         echo ${{ inputs.versao }}
+
+      
