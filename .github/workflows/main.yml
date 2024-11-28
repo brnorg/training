@@ -18,10 +18,6 @@ on:
       - '**.js'
 
   workflow_dispatch:
-    secrets:
-      token:
-        required: true
-        description: seguranca
     inputs:
       nome-da-tecnologia:
         type: choice
