@@ -56,7 +56,7 @@ jobs:
          echo ${{ github.repository }} #obtem o repositorio
          echo ${{ github.sha }} #obtem o hash do ultimo commit
          echo ${{ github.run_number }} #obtem o numero da execução do job
-         
+         echo ${{ github.event_name }} #nome do evento
          echo ${{ job.status }}
          echo ${{ github.event_name }}
 
