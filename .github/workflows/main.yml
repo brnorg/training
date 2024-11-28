@@ -56,4 +56,9 @@ jobs:
          echo ${{ github.sha }} #obtem o hash do ultimo commit
          echo ${{ job.status }}
          echo ${{ github.event_name }}
+
+      - name: trabalhando com summary
+        run: |
+          echo "### Hello world! :rocket:" >> $GITHUB_STEP_SUMMARY
+
              
