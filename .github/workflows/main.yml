@@ -1,8 +1,22 @@
 name: primeiro-workflow #nome do workflow que sera exibido 
 run-name: workflow executado por ${{ github.actor }}
 
-on:
-  repository_dispatch:
+
+# url com todos os tipos de gatilhos (triggers de workflows aceitaveis) 
+#https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows
+# confira a sintaxe aqui
+#https://docs.github.com/pt/actions/writing-workflows/workflow-syntax-for-github-actions#about-yaml-syntax-for-workflows
+
+
+on: 
+  workflow_dispatch:
+    inputs:
+      nome:
+        type: math
+        required: true
+        description: descrição
+        default: 1+1
+      
 
 jobs:
   teste-ci:
@@ -12,8 +26,17 @@ jobs:
      - name: primeiro step
        run: echo "lorem ipsum"
 
-     - run: |
-         
+     - name: segundo step
+       run: |        
           What is Lorem Ipsum?
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+          when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+          It has survived not only five centuries, but also the leap into electronic typesetting, 
+          remaining essentially unchanged. It was popularised in the 1960s with the release of 
+          Letraset sheets containing Lorem Ipsum passages, and more recently with desktop 
+          publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+     - name: listando inputs
+       run: |
+          
