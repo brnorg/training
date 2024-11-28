@@ -1,5 +1,5 @@
 name: primeiro-workflow #nome do workflow que sera exibido 
-run-name: workflow executado por ${{ github.actor }}
+run-name: workflow executado por ${{ github.actor }} # contexto github.actor obtem o usuario que executou o workflow
 
 
 # url com todos os tipos de gatilhos (triggers de workflows aceitaveis) 
@@ -9,6 +9,12 @@ run-name: workflow executado por ${{ github.actor }}
 
 
 on: 
+  push:
+    branches:
+      - main
+    paths:
+      - '**.js'
+
   workflow_dispatch:
     inputs:
       nome-da-tecnologia:
@@ -23,7 +29,6 @@ on:
         description: informe o nome da tecnologia
         default: OUTRO
       versao:
-        type: text
         required: true
         description: informe a versão
         default: '1.0'
@@ -31,15 +36,27 @@ on:
 
 jobs:
   teste-ci:
-   name: ci
-   runs-on: ubuntu-latest
-   steps:
-     - name: primeiro step
-       run: echo "lorem ipsum"  
-
-     - name: listando inputs
-       run: |
-         echo ${{ inputs.nome-da-tecnologia }}
+    name: ci
+    runs-on: ubuntu-latest
+    steps:
+      - name: primeiro step
+        run: echo "lorem ipsum"  
+  
+      - name: exibindo inputs
+        run: |
+         echo "mostrando versao"
          echo ${{ inputs.versao }}
+         echo ${{ inputs.nome-da-tecnologia }}
+  
+  
+      - name: listando contexts
+        run: |
+         echo ${{ github.ref }} #obtem a branch
+         echo ${{ github.repository }} #obtem o repositorio
+         echo ${{ github.sha }} #obtem o hash do ultimo commit
+         echo ${{ job.status }}
+         echo ${{ github.event }}
+         
+
 
       
