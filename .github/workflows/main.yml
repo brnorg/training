@@ -49,7 +49,9 @@ jobs:
          echo ${{ inputs.nome-da-tecnologia }}
   
 
-        # documentação de context
+        # documentação de context 
+        #https://docs.github.com/pt/actions/writing-workflows/choosing-what-your-workflow-does/accessing-contextual-information-about-workflow-runs#example-contents-of-the-github-context
+     
       - name: listando contexts
         run: |
          echo ${{ github.ref }} #obtem a branch
