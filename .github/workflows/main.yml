@@ -11,11 +11,22 @@ run-name: workflow executado por ${{ github.actor }}
 on: 
   workflow_dispatch:
     inputs:
-      nome:
+      nome-da-tecnologia:
+        type: choice
+        options:
+          - Java
+          - C#
+          - GO
+          - NODE
+          - OUTRO
+        required: true
+        description: informe o nome da tecnologia
+        default: OUTRO
+      versao:
         type: text
         required: true
-        description: informe o seu nome
-        default: 1+1
+        description: informe a versão
+        default: '1.0'
       
 
 jobs:
