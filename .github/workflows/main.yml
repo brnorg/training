@@ -94,8 +94,8 @@ jobs:
 
       - name: artifactory download
         uses: actions/download-artifact@v4.1.8
-        with:
-          path: rst/resultado.txt
+        # with:
+        #   path: rst/resultado.txt
 
       - run: ls -alh
 
