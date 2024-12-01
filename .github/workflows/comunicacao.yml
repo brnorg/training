@@ -24,8 +24,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: CI      
     env:
-      primeiro-output: ${{ needs.job.CI.outputs.primeiro-output }}
-      segundo-output: ${{ needs.job.CI.outputs.segundo-output }}
+      primeiro-output: ${{ needs.CI.outputs.primeiro-output }}
+      segundo-output: ${{ needs.CI.outputs.segundo-output }}
     steps:
       - run: echo $primeiro-output
       - run: echo $segundo-output
