@@ -9,8 +9,8 @@ jobs:
     name: ci - job1
     runs-on: ubuntu-latest
     outputs:
-      primeiro-output: ${{ steps.idStep1.outputs.primeriaSaida }}
-      segundo-output: ${{ steps.saida.outputs.segundaSaida }}
+      primeiro: ${{ steps.idStep1.outputs.primeriaSaida }}
+      segundo: ${{ steps.saida.outputs.segundaSaida }}
     steps:
       - name: step1
         id: idStep1
@@ -24,8 +24,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: CI      
     env:
-      primeiro-output: ${{ needs.CI.outputs.primeiro-output }}
-      segundo-output: ${{ needs.CI.outputs.segundo-output }}
+      primeiro: ${{ needs.CI.outputs.primeiro }}
+      segundo: ${{ needs.CI.outputs.segundo }}
     steps:
       - run: echo $primeiro-output
       - run: echo $segundo-output
