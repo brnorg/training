@@ -94,8 +94,8 @@ jobs:
 
       - name: artifactory download
         uses: actions/download-artifact@v4.1.8
-        # with:
-        #   path: /
+        with:
+          path: /
 
       - run: ls -alh
 
