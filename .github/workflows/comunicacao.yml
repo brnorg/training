@@ -29,4 +29,9 @@ jobs:
     steps:
       - run: echo $primeiro-output
       - run: echo $segundo-output
+      - name: criando outra variavel de ambiente
+        run: echo "NOVAVARIAVEL=novoValor" >> $GITHUB_ENV
+
+      - name: acessando variavel criada
+        run: echo $NOVAVARIAVEL
         
