@@ -9,7 +9,7 @@ jobs:
     name: ci - job1
     runs-on: ubuntu-latest
     outputs:
-      primeiro-outuput: ${{ steps.idStep1.outputs.primeriaSaida }}
+      primeiro-output: ${{ steps.idStep1.outputs.primeriaSaida }}
       segundo-output: ${{ steps.saida.outputs.segundaSaida }}
     steps:
       - name: step1
