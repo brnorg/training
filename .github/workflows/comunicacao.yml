@@ -1,3 +1,6 @@
+# documentação sobre comunicação entre jobs
+# https://docs.github.com/pt/actions/writing-workflows/choosing-what-your-workflow-does/passing-information-between-jobs
+
 name: comunicacao entre jobs
 run-name: "comunicação entre runners executado por ${{ github.actor }} " 
 
