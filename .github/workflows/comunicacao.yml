@@ -1,0 +1,21 @@
+name: comunicacao entre jobs
+run-name: "comunicação entre runners executado por ${github.actuator}" 
+
+on:
+  workflow_dispatch:
+
+jobs:
+  CI:
+    name: ci - job1
+    runs-on: ubuntu-latest
+    outputs:
+      primeiro-outuput: ${{ steps.idStep1.outputs.primeriaSaida }}
+      segundo-output: ${{ steps.saida.outputs.segundaSaida }}
+    steps:
+      - name: step1
+        id: idStep1
+        run: echo primeriaSaida=valor1 >> GITHUB_OUTPUT
+      - name: step2
+        id: saida
+        run: echo segundaSaida=valor2 >> GITHUB_OUTPUT
+        
