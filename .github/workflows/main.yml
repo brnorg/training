@@ -4,11 +4,9 @@ run-name: workflow executado por ${{ github.actor }} # contexto github.actor obt
 
 # url com todos os tipos de gatilhos (triggers de workflows aceitaveis) 
 #https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows
+
 # confira a sintaxe aqui
 #https://docs.github.com/pt/actions/writing-workflows/workflow-syntax-for-github-actions#about-yaml-syntax-for-workflows
-
-#sintaxe dos workflows
-#https://docs.github.com/pt/actions/writing-workflows/workflow-syntax-for-github-actions
 
 on: 
   push:
@@ -71,5 +69,26 @@ jobs:
 
        # mais uma documentação
        # https://docs.github.com/pt/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions
+
+
+        # documentação da action checkout https://github.com/actions/checkout
+      - name: checkout (lendo repositorio)
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }} # apontando para a brach na qual o workflow foi executado referencia
+
+      - name: artifactory
+        uses: actions/upload-artifact@v4.4.3
+        with:
+          name: arquivo #nome do artefato
+          path: resultado #diretorio ou arquivo
+          if-no-files-found: error #defino para a pipe quebrar caso não encontre o arquivo no path 
+          retention-days: 1
+          compression-level: 9 # nivel de compressão de 0 a 9 
+          
+          
+          
+
+        
 
              
