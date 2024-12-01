@@ -85,7 +85,7 @@ jobs:
           name: arquivo #nome do artefato
           path: resultado #diretorio ou arquivo
           if-no-files-found: error #defino para a pipe quebrar caso não encontre o arquivo no path 
-          retention-days: 1
+          retention-days: 1 # limite de 1 a 90 dias
           compression-level: 9 # nivel de compressão de 0 a 9 
 
 
@@ -97,10 +97,13 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/.yml') }} # chave usada para salvar e recuperar o cache
           path: resultado.txt
 
-         # quando usar atifact vs cache ?
+         # quando usar artifact vs cache ?
          # use artifact quando tu precisar deixar um resultado disponivel para donwload no final
          # cache utilize para processos e circuitos internos na esteira
-          
+
+         # entre cache e artifact todos eles usam o mesmo espaço por repositorio de 10GB
+         # quando essa quantia é atingida o github analisa os ultimos cache acessados e começa a apagar para
+         # liberar espaço
           
           
 
