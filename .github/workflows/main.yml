@@ -79,7 +79,7 @@ jobs:
 
 
       - name: criando arquivo para cache
-        run: mkdir rst && echo ${{ github.run_number }} > resultado.txt
+        run: mkdir rst && echo ${{ github.run_number }} > rst/resultado.txt
 
         # documentação de como trabalhar com artifact
         # https://github.com/marketplace/actions/upload-a-build-artifact
@@ -88,7 +88,7 @@ jobs:
         with:
           name: arquivo #nome do artefato
           path: rst/resultado.txt #diretorio ou arquivo 
-          if-no-files-found: warn # defino para a pipe quebrar caso não encontre o arquivo no path 
+          if-no-files-found: error # defino para a pipe quebrar caso não encontre o arquivo no path 
           retention-days: 1 # limite de 1 a 90 dias 
           compression-level: 9 # nivel de compressão de 0 a 9 
 
