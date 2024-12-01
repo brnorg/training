@@ -14,8 +14,8 @@ jobs:
     steps:
       - name: step1
         id: idStep1
-        run: echo primeriaSaida=valor1 >> GITHUB_OUTPUT
+        run: echo primeriaSaida=valor1 >> $GITHUB_OUTPUT
       - name: step2
         id: saida
-        run: echo segundaSaida=valor2 >> GITHUB_OUTPUT
+        run: echo segundaSaida=valor2 >> $GITHUB_OUTPUT
         
