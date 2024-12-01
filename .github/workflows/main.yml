@@ -119,7 +119,7 @@ jobs:
       - name: executando script
         uses: actions/github-script@v7
         with:
-          scipt: |
+          script: |
             console.log("texte")
           
           
