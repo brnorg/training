@@ -83,7 +83,7 @@ jobs:
 
         # documentação de como trabalhar com artifact
         # https://github.com/marketplace/actions/upload-a-build-artifact
-      - name: artifactory
+      - name: artifactory upload
         uses: actions/upload-artifact@v4.4.3
         with:
           name: arquivo #nome do artefato
@@ -92,11 +92,16 @@ jobs:
           retention-days: 1 # limite de 1 a 90 dias 
           compression-level: 9 # nivel de compressão de 0 a 9 
 
+      - name: artifactory download
+        uses: actions/download-artifact@v4.1.8
+        with:
+          path: resultado.txt
+
       - name: cache
         uses: actions/cache@v4
         with:
-          #fail-on-cache-miss: true # defino a step para falhar caso não encontre o cache (util para etapa de recuperacao)
-          lookup-only: true
+          fail-on-cache-miss: true # defino a step para falhar caso não encontre o cache (util para etapa de recuperacao)
+          # lookup-only: true
           key: ${{ runner.os }}-${{ hashFiles('**/*.yml') }} # chave usada para salvar e recuperar o cache
           path: resultado.txt
 
