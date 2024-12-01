@@ -19,6 +19,13 @@ jobs:
         id: saida
         run: echo segundaSaida=valor2 >> $GITHUB_OUTPUT
 
+       # documentação comandos extras no shell
+       # https://docs.github.com/pt/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions?tool=bash
+      - name: mascanrando variavel
+        run: echo "PROTECAO=::add-mask::VARIAVEL_PROTEGIDA" >> GITHUB_ENV
+      - name: lendo variavel segura
+        run: echo $PROTECAO
+
   VERIFY:
     name: verifica job
     runs-on: ubuntu-latest
@@ -27,11 +34,12 @@ jobs:
       primeiro: ${{ needs.CI.outputs.primeiro }}
       segundo: ${{ needs.CI.outputs.segundo }}
     steps:
-      - run: echo $primeiro-output
-      - run: echo $segundo-output
+      - run: echo "$primeiro"
+      - run: echo "$segundo"
       - name: criando outra variavel de ambiente
         run: echo "NOVAVARIAVEL=novoValor" >> $GITHUB_ENV
 
       - name: acessando variavel criada
         run: echo $NOVAVARIAVEL
         
+
