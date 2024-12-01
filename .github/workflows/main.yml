@@ -87,9 +87,9 @@ jobs:
         uses: actions/upload-artifact@v4.4.3
         with:
           name: arquivo #nome do artefato
-          path: resultado.txt #diretorio ou arquivo
+          path: resultado.txt #diretorio ou arquivo 
           if-no-files-found: warn # defino para a pipe quebrar caso não encontre o arquivo no path 
-          retention-days: 1 # limite de 1 a 90 dias
+          retention-days: 1 # limite de 1 a 90 dias 
           compression-level: 9 # nivel de compressão de 0 a 9 
 
       - name: cache
