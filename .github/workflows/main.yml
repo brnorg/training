@@ -114,6 +114,13 @@ jobs:
          # entre cache e artifact todos eles usam o mesmo espaço por repositorio de 10GB
          # quando essa quantia é atingida o github analisa os ultimos cache acessados e começa a apagar para
          # liberar espaço
+
+    
+      - name: executando script
+        uses: actions/actions/github-script@v7
+        with:
+          scipt: |
+            console.log("texte")
           
           
 
