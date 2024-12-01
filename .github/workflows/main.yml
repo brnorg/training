@@ -96,7 +96,7 @@ jobs:
         uses: actions/cache@v4
         with:
           #fail-on-cache-miss: true # defino a step para falhar caso não encontre o cache (util para etapa de recuperacao)
-          lookup-only: true
+          # lookup-only: true
           key: ${{ runner.os }}-${{ hashFiles('**.yml') }} # chave usada para salvar e recuperar o cache
           path: resultado.txt
 
