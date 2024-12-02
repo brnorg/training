@@ -1,0 +1,36 @@
+name: Mask Secrets Workflow
+
+on: [push]
+
+jobs:
+  mask-secrets:
+    runs-on: ubuntu-latest
+    outputs:
+      password1: ${{ steps.set-passwords.outputs.password1 }}
+      password2: ${{ steps.set-passwords.outputs.password2 }}
+    steps:
+      - name: Definir senhas
+        id: set-passwords
+        run: |
+          # Definindo as senhas
+          PASSWORD1="minhaSenha1"
+          PASSWORD2="minhaSenha2"
+
+          # Mascarando as senhas nos logs
+          echo "::add-mask::$PASSWORD1"
+          echo "::add-mask::$PASSWORD2"
+
+          # Exportando as senhas como saídas
+          echo "password1=$PASSWORD1" >> $GITHUB_ENV
+          echo "password2=$PASSWORD2" >> $GITHUB_ENV
+          echo "password1=$PASSWORD1" >> $GITHUB_OUTPUT
+          echo "password2=$PASSWORD2" >> $GITHUB_OUTPUT
+
+  use-secrets:
+    runs-on: ubuntu-latest
+    needs: mask-secrets
+    steps:
+      - name: Usar senhas mascaradas
+        run: |
+          echo "Senha 1: ${{ needs.mask-secrets.outputs.password1 }}"
+          echo "Senha 2: ${{ needs.mask-secrets.outputs.password2 }}"
