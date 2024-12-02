@@ -9,6 +9,8 @@ run-name: "comunicação entre runners executado por ${{ github.actor }} "
 
 on:
   workflow_dispatch:
+  push:
+    branches: main
 
 jobs:
   CI:
@@ -34,7 +36,9 @@ jobs:
           echo "::add-mask::bruno"
           echo "PROTECAO=$valorprotegido" >> GITHUB_ENV
           echo $valorprotegido
-          echo "$PROTECAO"
+          echo $PROTECAO
+          env
+          
       - name: lendo variavel segura
         run: echo "$PROTECAO"
 
