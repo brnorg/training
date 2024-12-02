@@ -26,7 +26,9 @@ jobs:
        # https://docs.github.com/pt/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions?tool=bash
       - name: mascanrando variavel
         run: | 
-          echo "PROTECAO=::add-mask::valorprotegido" >> GITHUB_ENV
+          valorprotegido="senhaRecebidoPorVault"
+          echo "::add-mask::$valorprotegido"
+          echo "PROTECAO=$valorprotegido" >> GITHUB_ENV
       - name: lendo variavel segura
         run: echo $PROTECAO
 
