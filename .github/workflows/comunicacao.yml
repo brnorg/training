@@ -19,6 +19,7 @@ jobs:
     outputs:
       primeiro: ${{ steps.idStep1.outputs.primeriaSaida }}
       segundo: ${{ steps.saida.outputs.segundaSaida }}
+      handle: ${{ steps.mascara.outputs.handle }}
     steps:
       - name: step1
         id: idStep1
@@ -30,14 +31,15 @@ jobs:
        # documentação comandos extras no shell
        # https://docs.github.com/pt/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions?tool=bash
       - name: mascanrando variavel
+        id: mascara
         run: | 
           valorprotegido="senhaRecebidoPorVault"
           echo "::add-mask::$valorprotegido"
           echo "::add-mask::bruno"
-          echo "PROTECAO=$valorprotegido" >> GITHUB_ENV
           echo $valorprotegido
-          echo $PROTECAOSSS
-          env
+          SECRET_HANDLE=$(secret-store store-secret "$valorprotegido")
+          echo "handle=$SECRET_HANDLE" >> "$GITHUB_OUTPUT"
+
           
       - name: lendo variavel segura
         run: echo "$PROTECAO"
