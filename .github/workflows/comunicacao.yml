@@ -30,7 +30,7 @@ jobs:
       - name: mascanrando variavel
         run: | 
           valorprotegido="senhaRecebidoPorVault"
-          echo "::add-mask::"$valorprotegido"
+          echo "::add-mask::$valorprotegido"
           echo "::add-mask::bruno"
           echo "PROTECAO=$valorprotegido" >> GITHUB_ENV
       - name: lendo variavel segura
