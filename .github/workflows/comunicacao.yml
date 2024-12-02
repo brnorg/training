@@ -54,7 +54,25 @@ jobs:
       - name: criando outra variavel de ambiente
         run: echo "NOVAVARIAVEL=novoValor" >> $GITHUB_ENV
 
-      - name: acessando variavel criada
-        run: echo $NOVAVARIAVEL
+      - name: Definir senhas
+        id: set-passwords
+        run: |
+          # Definindo as senhas
+          PASSWORD1="minhaSenha1"
+          PASSWORD2="minhaSenha2"
+
+          # Mascarando as senhas nos logs
+          echo "::add-mask::$PASSWORD1"
+          echo "::add-mask::$PASSWORD2"
+
+          # Exportando as senhas como variáveis de ambiente
+          echo "PASSWORD1=$PASSWORD1" >> $GITHUB_ENV
+          echo "PASSWORD2=$PASSWORD2" >> $GITHUB_ENV
+
+      - name: Usar senhas mascaradas
+        run: |
+          echo "Senha 1: $PASSWORD1"
+          echo "Senha 2: $PASSWORD2"
+
         
 
