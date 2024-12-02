@@ -19,7 +19,6 @@ jobs:
     outputs:
       primeiro: ${{ steps.idStep1.outputs.primeriaSaida }}
       segundo: ${{ steps.saida.outputs.segundaSaida }}
-      handle: ${{ steps.mascara.outputs.handle }}
     steps:
       - name: step1
         id: idStep1
@@ -37,8 +36,6 @@ jobs:
           echo "::add-mask::$valorprotegido"
           echo "::add-mask::bruno"
           echo $valorprotegido
-          SECRET_HANDLE=$(secret-store store-secret "$valorprotegido")
-          echo "handle=$SECRET_HANDLE" >> "$GITHUB_OUTPUT"
 
           
       - name: lendo variavel segura
