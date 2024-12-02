@@ -34,8 +34,9 @@ jobs:
           echo "::add-mask::bruno"
           echo "PROTECAO=$valorprotegido" >> GITHUB_ENV
           echo $valorprotegido
+          echo "$PROTECAO"
       - name: lendo variavel segura
-        run: echo $PROTECAO
+        run: echo "$PROTECAO"
 
   VERIFY:
     name: verifica job
