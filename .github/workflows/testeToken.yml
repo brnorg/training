@@ -3,17 +3,19 @@ name: teste token
 on: 
   workflow_dispatch:
     inputs:
-        brntoken:
-        description: 'token'
+      brntoken:
+        description: 'Token'
         required: true
         type: string      
-  
 
 jobs:
   teste:
     runs-on: ubuntu-latest
     steps:
-      - name: teste
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
           token: ${{ inputs.brntoken }}
+
+      - name: Display token (for debugging purposes)
+        run: echo "Token received: ${{ inputs.brntoken }}"
