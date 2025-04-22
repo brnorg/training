@@ -17,5 +17,3 @@ jobs:
         with:
           token: ${{ inputs.brntoken }}
 
-      - name: Display token (for debugging purposes)
-        run: echo "Token received: ${{ inputs.brntoken }}"
