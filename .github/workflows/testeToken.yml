@@ -17,3 +17,5 @@ jobs:
         with:
           token: ${{ inputs.brntoken }}
 
+      - run: ls -alh
+
