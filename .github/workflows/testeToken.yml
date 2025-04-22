@@ -1,6 +1,13 @@
 name: teste token
 
-on: [workflow_dispatch]
+on: 
+  workflow_dispatch:
+    inputs:
+        brntoken:
+        description: 'token'
+        required: true
+        type: string      
+  
 
 jobs:
   teste:
@@ -9,4 +16,4 @@ jobs:
       - name: teste
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.tokenbrn }}
+          token: ${{ inputs.brntoken }}
